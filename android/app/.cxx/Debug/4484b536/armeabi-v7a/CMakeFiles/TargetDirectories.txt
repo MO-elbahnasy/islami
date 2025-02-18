@@ -1,0 +1,2 @@
+C:/Users/moham/OneDrive/Desktop/islami-Development/android/app/.cxx/Debug/4484b536/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/moham/OneDrive/Desktop/islami-Development/android/app/.cxx/Debug/4484b536/armeabi-v7a/CMakeFiles/rebuild_cache.dir
