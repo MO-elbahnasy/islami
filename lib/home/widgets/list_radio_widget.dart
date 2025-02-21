@@ -22,13 +22,13 @@ class ListRadioWidget extends StatelessWidget {
             ),
             itemBuilder: (context, index) {
               if (state is RadioLoadingState){
-                return const CircularProgressIndicator();
+                return  const Center(child: CircularProgressIndicator());
               } else if (state is RadioSuccessState){
                 return  RadioWidget(radioStation: listRadios[index],);
               } else if (state is RadioFailureState){
                 return Text("Error : ${state.errorMessage}");
               } else{
-                return SizedBox();
+                return const SizedBox();
               }
             },
             itemCount: 20,

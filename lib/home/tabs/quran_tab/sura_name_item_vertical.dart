@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/models/sura_details_model.dart';
-import 'package:islamy/sura_details/sura_details.dart';
 
 class SuraNameItemVertical extends StatelessWidget {
   SuraDetailsModel suraModel;

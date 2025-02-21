@@ -30,7 +30,7 @@ class _TestState extends State<Test> {
           ),
           AnimatedRotation(
             turns: turns,
-            duration: Duration(seconds: 1),
+            duration: const Duration(seconds: 1),
             child: Column(
               children: <Widget>[
                 Image.asset(
@@ -41,7 +41,7 @@ class _TestState extends State<Test> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 100,
           ),
         ],

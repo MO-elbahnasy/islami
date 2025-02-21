@@ -60,7 +60,7 @@ class _SebhaTabState extends State<SebhaTab> {
                     children: [
                       AnimatedRotation(
                         turns: turns,
-                        duration: Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 500),
                         child: Column(
                           children: <Widget>[
                             Image.asset(
@@ -73,7 +73,7 @@ class _SebhaTabState extends State<SebhaTab> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "${tasabeh[counter]}",
+                            tasabeh[counter],
                             style: Theme.of(context).textTheme.bodyLarge,
                           ),
                           const SizedBox(

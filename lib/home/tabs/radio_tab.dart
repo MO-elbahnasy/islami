@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islamy/home/widgets/radio_widget.dart';
 
 import '../widgets/list_radio_widget.dart';
 
@@ -94,7 +93,7 @@ class _RadioTabState extends State<RadioTab> {
                       setState(() {});
                     },
                     controller: _pageController,
-                    children: [
+                    children: const [
 
                       Expanded(
                         child: ListRadioWidget(),

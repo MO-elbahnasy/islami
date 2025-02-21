@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hijri/hijri_calendar.dart';
-import 'package:http/http.dart' as http;
 class DatesTab extends StatefulWidget {
   const DatesTab({super.key});
 
@@ -184,7 +183,7 @@ class _DatesTabState extends State<DatesTab> {
                           style: Theme.of(context)
                               .textTheme
                               .titleSmall
-                              ?.copyWith(color: Color(0xf0202020)),
+                              ?.copyWith(color: const Color(0xf0202020)),
                         )
                       ],
                     )

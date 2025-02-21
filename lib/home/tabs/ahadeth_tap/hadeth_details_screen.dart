@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/models/hadeth_model.dart';
-import 'package:islamy/my_them.dart';
 
 class HadethDetailsScreen extends StatelessWidget {
   static const String routName = "HadethDetailsScreen";
