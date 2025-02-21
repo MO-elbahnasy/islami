@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:islamy/core/helper/api_service.dart';
 import 'package:islamy/home/tabs/ahadeth_tap/hadeth_details_screen.dart';
+import 'package:islamy/home/view_model/dates/dates_cubit.dart';
 import 'package:islamy/my_them.dart';
 import 'package:islamy/onBoarding/onboarding_screen.dart';
 import 'package:islamy/sura_details/sura_details.dart';
@@ -13,6 +14,7 @@ void main() {
   runApp( MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => RadioCubit(ApiService())..getRadioList()),
+        BlocProvider(create: (context) => DatesCubit(ApiService())..getDates()),
 
       ],
   child: const MyApp()));
