@@ -1,6 +1,6 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:islamy/home/model/radio_model.dart';
+import 'package:just_audio/just_audio.dart';
 
 class RadioWidget extends StatelessWidget {
   final RadioStation radioStation;
@@ -31,7 +31,12 @@ class RadioWidget extends StatelessWidget {
                 const Icon(Icons.favorite, size: 32),
                 const SizedBox(width: 12),
                 IconButton(
-                  onPressed: () {
+                  onPressed: () async{
+                    final player = AudioPlayer();                   // Create a player
+                    final duration = await player.setUrl(           // Load a URL
+                        radioStation.url??"");
+                    print(radioStation.url);// Schemes: (https: | file: | asset: )
+                    player.play();
                   },
                   icon:  Icon(
                      Icons.play_arrow,

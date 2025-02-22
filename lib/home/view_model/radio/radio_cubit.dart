@@ -1,4 +1,3 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:islamy/home/view_model/radio/radio_state.dart';
 import '../../../core/helper/api_service.dart';
@@ -7,7 +6,7 @@ class RadioCubit extends Cubit<RadioState> {
   RadioCubit(this.apiService) : super(RadioStateInitialState());
   List<RadioStation> radioList = [];
   final ApiService apiService;
-  final AudioPlayer player = AudioPlayer(); // Create a single instance
+
   bool isPlaying = false; // Track the play state
 
   Future<void> getRadioList() async {
@@ -26,5 +25,8 @@ class RadioCubit extends Cubit<RadioState> {
       emit(RadioFailureState(errorMessage: e.toString()));
     }
   }
+
+
+
 
 }
