@@ -7,6 +7,8 @@ class RadioCubit extends Cubit<RadioState> {
   RadioCubit(this.apiService) : super(RadioStateInitialState());
   List<RadioStation> radioList = [];
   final ApiService apiService;
+  bool isMute= false;
+
 
   Future<void> getRadioList() async {
     emit(RadioLoadingState());
@@ -38,7 +40,7 @@ class RadioCubit extends Cubit<RadioState> {
       emit(RadioPausedState());
     } else {
        _player.stop();
-      await _player.setUrl(url);
+       _player.setUrl(url);
        _player.play();
 
       playingIndex = index;
@@ -49,7 +51,7 @@ class RadioCubit extends Cubit<RadioState> {
 
 
   Future<void> stop() async {
-    await _player.stop();
+     _player.stop();
     isPlaying = false;
     playingIndex = null;
     emit(SoundRadioStoppedState());
@@ -63,8 +65,10 @@ class RadioCubit extends Cubit<RadioState> {
 
   Future<void> muteUnmute() async {
     if (volume > 0) {
+      isMute = true;
       await setVolume(0.0);
     } else {
+      isMute = false;
       await setVolume(1.0);
     }
   }

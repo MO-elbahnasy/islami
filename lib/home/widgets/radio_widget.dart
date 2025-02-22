@@ -52,7 +52,17 @@ class RadioWidget extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 12),
-                    const Icon(Icons.volume_down_sharp, size: 32),
+                     IconButton(
+                      onPressed: () {
+                        radioCubit.muteUnmute();
+                      },
+                      icon:
+
+                      Icon(
+                        radioCubit.isMute && radioCubit.playingIndex == index
+                            ?
+                        Icons.volume_off_sharp:
+                        Icons.volume_down_sharp, size: 32,),),
                   ],
                 ),
               ],
