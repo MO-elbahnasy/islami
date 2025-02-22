@@ -11,30 +11,34 @@ class ListRadioWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = BlocProvider.of<RadioCubit>(context);
-    return
-      BlocBuilder<RadioCubit, RadioState>
-        (builder: (BuildContext context, RadioState state) {
-          List<RadioStation> listRadios=cubit.radioList;
-          return ListView.separated(
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 12,
-            ),
-            itemBuilder: (context, index) {
-              if (state is RadioLoadingState){
-                return  const Center(child: CircularProgressIndicator());
-              } else if (state is RadioSuccessState){
-                return  RadioWidget(radioStation: listRadios[index],);
-              } else if (state is RadioFailureState){
-                return Text("Error : ${state.errorMessage}");
-              } else{
-                return const SizedBox();
-              }
-            },
-            itemCount: 20,
-          );
-      },
-      );
+    return BlocBuilder<RadioCubit, RadioState>(
+      builder: (BuildContext context, RadioState state) {
+        var cubit = context.read<RadioCubit>();
+        List<RadioStation> listRadios = cubit.radioList;
 
+        if (state is RadioLoadingState) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is RadioFailureState) {
+          return Text("Error: ${state.errorMessage}");
+        }
+
+        return ListView.separated(
+          separatorBuilder: (context, index) => const SizedBox(height: 12),
+          itemCount: listRadios.length, // Ensure the correct item count
+          itemBuilder: (context, index) {
+            return BlocBuilder<RadioCubit, RadioState>(
+              buildWhen: (previous, current) => current is RadioPlayingState || current is RadioPausedState,
+              builder: (context, state) {
+                return RadioWidget(
+                  radioStation: listRadios[index],
+                  index: index,
+                );
+              },
+            );
+          },
+        );
+      },
+    );
   }
 }
+
