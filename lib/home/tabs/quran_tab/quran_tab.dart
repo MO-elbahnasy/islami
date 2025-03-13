@@ -44,24 +44,26 @@ class _QuranTabState extends State<QuranTab> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-              padding: const EdgeInsets.only(top: 30),
-              child: Image.asset(
-                "assets/images/header_bg.png",
-                width: double.infinity,
-                height: 170,
-              )),
-          _searchSuraItem(),
-          if (SuraDetailsModel.searchSuraName.isEmpty &&
-              searchController.text.isEmpty) ...[
-            _suraNamesHorizontalList(),
+      child: SingleChildScrollView(
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+                padding: const EdgeInsets.only(top: 30),
+                child: Image.asset(
+                  "assets/images/header_bg.png",
+                  width: double.infinity,
+                  height: 170,
+                )),
+            _searchSuraItem(),
+            if (SuraDetailsModel.searchSuraName.isEmpty &&
+                searchController.text.isEmpty) ...[
+              _suraNamesHorizontalList(),
+            ],
+            _suraNamesVerticalList(),
           ],
-          _suraNamesVerticalList(),
-        ],
+        ),
       ),
     );
   }
@@ -104,48 +106,46 @@ class _QuranTabState extends State<QuranTab> {
 
   //sura Vertical List
   Widget _suraNamesVerticalList() {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //Sura Details
-          Text(
-            "Sura List",
-            style: Theme.of(context).textTheme.titleSmall,
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        //Sura Details
+        Text(
+          "Sura List",
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        // Vertical List
+        ListView.separated(
+          shrinkWrap: true,
+          separatorBuilder: (context, index) => const Divider(
+            color: Colors.white,
+            height: 3,
+            endIndent: 40,
+            indent: 40,
           ),
-          // Vertical List
-          Expanded(
-            child: ListView.separated(
-              separatorBuilder: (context, index) => const Divider(
-                color: Colors.white,
-                height: 3,
-                endIndent: 40,
-                indent: 40,
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, SuraDetailsScreen.routeName,
+                      arguments: SuraDetailsModel.getSuraModel(index));
+                },
+                child: SuraNameItemVertical(
+                  suraModel: searchController.text.isNotEmpty
+                      ? SuraDetailsModel.getSelectedSuraModel(index)
+                      : SuraDetailsModel.getSuraModel(index),
+                ),
               ),
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, SuraDetailsScreen.routeName,
-                          arguments: SuraDetailsModel.getSuraModel(index));
-                    },
-                    child: SuraNameItemVertical(
-                      suraModel: searchController.text.isNotEmpty
-                          ? SuraDetailsModel.getSelectedSuraModel(index)
-                          : SuraDetailsModel.getSuraModel(index),
-                    ),
-                  ),
-                );
-              },
-              itemCount: searchController.text.isNotEmpty
-                  ? SuraDetailsModel.searchSuraName.length
-                  : SuraDetailsModel.length,
-            ),
-          ),
-        ],
-      ),
+            );
+          },
+          itemCount: searchController.text.isNotEmpty
+              ? SuraDetailsModel.searchSuraName.length
+              : SuraDetailsModel.length,
+        ),
+      ],
     );
   }
 
