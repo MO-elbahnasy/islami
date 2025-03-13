@@ -28,8 +28,6 @@ class ApiService {
     }
   }
 
-
-
   Future<dynamic> postWithEmailAndPassword(
       {required String url, dynamic body, String? token}) async {
     Map<String, String> headers = {};
@@ -119,8 +117,6 @@ class ApiService {
     }
   }
 
-
-
   Future<dynamic> delete({
     required String url,
     String? token,
@@ -145,7 +141,6 @@ class ApiService {
     } else {
       debugPrint(response.body.toString());
       debugPrint(response.statusCode.toString());
-
 
       throw Exception(response.body);
     }

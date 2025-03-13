@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const AhadithTab(),
     const SebhaTab(),
     const RadioTab(),
-     const DatesTab(),
+    const DatesTab(),
   ];
 
   String backGroundImage() {

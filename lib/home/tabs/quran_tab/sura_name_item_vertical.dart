@@ -54,8 +54,8 @@ class SuraNameItemVertical extends StatelessWidget {
         Text(
           suraModel.suraNameAr,
           style: Theme.of(context).textTheme.titleSmall!.copyWith(
-            fontSize: 20,
-          ),
+                fontSize: 20,
+              ),
         ),
       ],
     );

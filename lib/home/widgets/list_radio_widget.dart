@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:islamy/home/model/radio_model.dart';
@@ -27,7 +26,8 @@ class ListRadioWidget extends StatelessWidget {
           itemCount: listRadios.length, // Ensure the correct item count
           itemBuilder: (context, index) {
             return BlocBuilder<RadioCubit, RadioState>(
-              buildWhen: (previous, current) => current is RadioPlayingState || current is RadioPausedState,
+              buildWhen: (previous, current) =>
+                  current is RadioPlayingState || current is RadioPausedState,
               builder: (context, state) {
                 return RadioWidget(
                   radioStation: listRadios[index],
@@ -41,4 +41,3 @@ class ListRadioWidget extends StatelessWidget {
     );
   }
 }
-

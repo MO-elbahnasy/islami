@@ -54,7 +54,7 @@ class HadethDetailsScreen extends StatelessWidget {
                                 TextSpan(
                                   text: hadithModel.content[index],
                                   style:
-                                  Theme.of(context).textTheme.titleMedium,
+                                      Theme.of(context).textTheme.titleMedium,
                                 ),
                               ],
                             ),
@@ -72,6 +72,4 @@ class HadethDetailsScreen extends StatelessWidget {
       ),
     );
   }
-
-
 }

@@ -94,13 +94,11 @@ class _RadioTabState extends State<RadioTab> {
                     },
                     controller: _pageController,
                     children: const [
-
                       Expanded(
                         child: ListRadioWidget(),
                       ),
-
                       Expanded(
-                        child:ListRadioWidget(),
+                        child: ListRadioWidget(),
                       ),
                     ],
                   ),
@@ -112,6 +110,4 @@ class _RadioTabState extends State<RadioTab> {
       ],
     );
   }
-
-
 }

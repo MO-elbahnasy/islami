@@ -48,11 +48,13 @@ class MyThem {
         color: MyThem.primaryColor,
         fontSize: 16,
         fontWeight: FontWeight.w700,
-      ),bodyMedium: TextStyle(
+      ),
+      bodyMedium: TextStyle(
         color: Colors.black,
         fontSize: 24,
         fontWeight: FontWeight.w700,
-      ),bodyLarge: TextStyle(
+      ),
+      bodyLarge: TextStyle(
         color: Colors.white,
         fontSize: 36,
         fontWeight: FontWeight.bold,

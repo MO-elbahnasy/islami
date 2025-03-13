@@ -14,7 +14,6 @@ class _SebhaTabState extends State<SebhaTab> {
   String label = "";
   double turns = 0.0;
 
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

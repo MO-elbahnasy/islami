@@ -11,13 +11,10 @@ import 'home/home_screen.dart';
 import 'home/view_model/radio/radio_cubit.dart';
 
 void main() {
-  runApp( MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => RadioCubit(ApiService())..getRadioList()),
-        BlocProvider(create: (context) => DatesCubit(ApiService())..getDates()),
-
-      ],
-  child: const MyApp()));
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider(create: (context) => RadioCubit(ApiService())..getRadioList()),
+    BlocProvider(create: (context) => DatesCubit(ApiService())..getDates()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +22,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       initialRoute: OnboardingScreen.routeName,
       debugShowCheckedModeBanner: false,
@@ -34,7 +30,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       routes: {
         HomeScreen.routeName: (context) => const HomeScreen(),
-        OnboardingScreen.routeName: (context) =>  OnboardingScreen(),
+        OnboardingScreen.routeName: (context) => OnboardingScreen(),
         SuraDetailsScreen.routeName: (context) => const SuraDetailsScreen(),
         HadethDetailsScreen.routName: (context) => const HadethDetailsScreen(),
       },

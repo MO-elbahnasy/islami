@@ -3,12 +3,12 @@ import 'package:islamy/home/view_model/radio/radio_state.dart';
 import 'package:just_audio/just_audio.dart';
 import '../../../core/helper/api_service.dart';
 import '../../model/radio_model.dart';
+
 class RadioCubit extends Cubit<RadioState> {
   RadioCubit(this.apiService) : super(RadioStateInitialState());
   List<RadioStation> radioList = [];
   final ApiService apiService;
-  bool isMute= false;
-
+  bool isMute = false;
 
   Future<void> getRadioList() async {
     emit(RadioLoadingState());
@@ -32,16 +32,15 @@ class RadioCubit extends Cubit<RadioState> {
   bool isPlaying = false;
   double volume = 1.0; // Default volume (1.0 = 100%)
 
-
   Future<void> playPause(int index, String url) async {
     if (playingIndex == index && isPlaying) {
-       _player.pause();
+      _player.pause();
       isPlaying = false;
       emit(RadioPausedState());
     } else {
-       _player.stop();
-       _player.setUrl(url);
-       _player.play();
+      _player.stop();
+      _player.setUrl(url);
+      _player.play();
 
       playingIndex = index;
       isPlaying = true;
@@ -49,9 +48,8 @@ class RadioCubit extends Cubit<RadioState> {
     }
   }
 
-
   Future<void> stop() async {
-     _player.stop();
+    _player.stop();
     isPlaying = false;
     playingIndex = null;
     emit(SoundRadioStoppedState());

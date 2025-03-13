@@ -31,21 +31,22 @@ class _QuranTabState extends State<QuranTab> {
         String englishName = SuraDetailsModel.suraNameEnglish[i].toLowerCase();
         String arabicName = SuraDetailsModel.suraNameArabic[i].toLowerCase();
 
-        if (englishName.contains(text.toLowerCase()) || arabicName.contains(text)) {
-          SuraDetailsModel.searchSuraName.add(SuraDetailsModel.suraNameEnglish[i]);
+        if (englishName.contains(text.toLowerCase()) ||
+            arabicName.contains(text)) {
+          SuraDetailsModel.searchSuraName
+              .add(SuraDetailsModel.suraNameEnglish[i]);
         }
       }
     }
     setState(() {});
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: SingleChildScrollView(
-          child: Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -106,7 +107,6 @@ class _QuranTabState extends State<QuranTab> {
 
   //sura Vertical List
   Widget _suraNamesVerticalList() {
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

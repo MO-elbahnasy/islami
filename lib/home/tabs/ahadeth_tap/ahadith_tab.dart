@@ -78,7 +78,8 @@ class _AhadithTabState extends State<AhadithTab> {
                           children: [
                             Container(
                               margin: const EdgeInsets.only(top: 50),
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
                               child: Text(
                                 hadeth.tittle,
                                 textAlign: TextAlign.center,

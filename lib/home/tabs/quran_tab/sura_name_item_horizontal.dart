@@ -3,11 +3,9 @@ import 'package:islamy/models/sura_details_model.dart';
 import 'package:islamy/my_them.dart';
 
 class SuraNameItemHorizontal extends StatelessWidget {
-  SuraDetailsModel suraModel ;
+  SuraDetailsModel suraModel;
 
-  SuraNameItemHorizontal(
-      {super.key,
-      required this.suraModel});
+  SuraNameItemHorizontal({super.key, required this.suraModel});
 
   @override
   Widget build(BuildContext context) {
@@ -26,21 +24,24 @@ class SuraNameItemHorizontal extends StatelessWidget {
               children: [
                 Text(
                   suraModel.suraNameEn,
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Colors.black
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(color: Colors.black),
                 ),
                 Text(
                   suraModel.suraNameAr,
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color: Colors.black
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(color: Colors.black),
                 ),
                 Text(
                   "${suraModel.suraVerses} Verses",
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color: Colors.black
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(color: Colors.black),
                 )
               ],
             ),

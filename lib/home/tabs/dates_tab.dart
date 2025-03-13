@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hijri/hijri_calendar.dart';
-import 'package:islamy/core/helper/api_service.dart';
 
 import '../view_model/dates/dates_cubit.dart';
 
@@ -81,7 +80,6 @@ class _DatesTabState extends State<DatesTab> {
     return hijriMonths[month - 1]; // Month is 1-indexed
   }
 
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -121,8 +119,7 @@ class _DatesTabState extends State<DatesTab> {
                               Expanded(
                                 child: Text(
                                   formattedDate,
-                                  style:
-                                      Theme.of(context).textTheme.titleSmall,
+                                  style: Theme.of(context).textTheme.titleSmall,
                                 ),
                               ),
                               Column(
@@ -179,57 +176,59 @@ class _DatesTabState extends State<DatesTab> {
                                 ),
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
-                                  return
-                                    state is DatesSuccessState?
-                                    Container(
-                                      padding: const EdgeInsets.all(12),
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          gradient: const LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                Color(0xff202020),
-                                                Color(0xffB19768),
-                                              ])),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            cubit.prayerList[index].key,
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 8,
-                                          ),
-                                          Text(
-                                            cubit.prayerList[index].value,
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 32,
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 8,
-                                          ),
-                                        ],
-                                      )):
-                                    state is DatesLoadingState ?
-                                     const CircularProgressIndicator()   :
-                                        state is DatesFaliureState ?
-                                   Text(state.errorMessage,style: TextStyle(
-                                     color: Colors.red,
-                                   ),) :
-                                            const SizedBox();
+                                  return state is DatesSuccessState
+                                      ? Container(
+                                          padding: const EdgeInsets.all(12),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              gradient: const LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    Color(0xff202020),
+                                                    Color(0xffB19768),
+                                                  ])),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                cubit.prayerList[index].key,
+                                                textAlign: TextAlign.center,
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 8,
+                                              ),
+                                              Text(
+                                                cubit.prayerList[index].value,
+                                                textAlign: TextAlign.center,
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 32,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 8,
+                                              ),
+                                            ],
+                                          ))
+                                      : state is DatesLoadingState
+                                          ? const CircularProgressIndicator()
+                                          : state is DatesFaliureState
+                                              ? Text(
+                                                  state.errorMessage,
+                                                  style: const TextStyle(
+                                                    color: Colors.red,
+                                                  ),
+                                                )
+                                              : const SizedBox();
                                 },
                               ),
                             );

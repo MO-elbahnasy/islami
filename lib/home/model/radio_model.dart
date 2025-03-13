@@ -1,4 +1,3 @@
-
 class RadioStation {
   final int? id;
   final String? name;

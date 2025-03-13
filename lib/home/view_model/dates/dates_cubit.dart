@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:islamy/core/helper/api_service.dart';
-import 'package:meta/meta.dart';
 
 import '../../model/dates_model.dart';
 
@@ -9,13 +8,14 @@ part 'dates_state.dart';
 class DatesCubit extends Cubit<DatesState> {
   DatesCubit(this.apiService) : super(DatesInitialState());
   final ApiService apiService;
-  List<MapEntry<String, String>> prayerList =[];
+  List<MapEntry<String, String>> prayerList = [];
 
   Future<void> getDates() async {
     emit(DatesLoadingState());
     try {
       var result = await apiService.get(
-          url: "https://api.aladhan.com/v1/timingsByCity/16-07-2024?city=cairo&country=egypt");
+          url:
+              "https://api.aladhan.com/v1/timingsByCity/16-07-2024?city=cairo&country=egypt");
       final model = PrayerTimesModel.fromJson(result);
       prayerList = [
         MapEntry("Fajr", model.timings.fajr),
